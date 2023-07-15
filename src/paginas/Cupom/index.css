@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+.Cupom{
+    max-width: 302px;
+    width: 302px;
+    /* background-color: blueviolet; */
+    font-weight: bold;
+    /* font-family: 'Oswald', sans-serif; */
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+}
+.HeaderNota{
+    display: flex;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    align-items: center;
+}
+.HeaderNota img{
+    height: 70px;
+    margin-right: 5px;
+}
+.desc{
+    font-size: 12px;
+}
+.descEndereço{
+    font-size: 10px;
+}
+.ItensCarrinho{
+border-bottom: 1px solid black;
+    font-size: 12px;
+    display: flex;
+    
+    flex-direction: column;
+}
+.campoNota{
+  border-bottom: 1px solid #000;
+}
+.detalhe{
+    margin: 5px 0px;
+    font-weight: 900;
+    font-size: 14px;
+}
+td{
+    padding: 0px;
+}
+.totalCupom{
+font-size: 12px;
+}
+.tablePersonalizada{
+    padding: 0px;
+}

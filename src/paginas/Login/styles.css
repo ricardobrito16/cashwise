@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* // OUTRAS RESOLUÇÕES //  */
+
+
+
+.LoginContainer {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cima {
+    width: 100%;
+    height: 50%;
+    background-color: #0089ED;
+}
+.IMG-LOGIN{
+width: 40%;
+}
+.baixo {
+    width: 100%;
+    height: 50%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+}
+
+.baixoEsquerda {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.baixoDireita {
+    background-color: #fff;
+    border-radius: 30px;
+    width: 540px;
+    height: 740px;
+    position: absolute;
+    top: -80%;
+    left: 65%;
+    box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.FormBox {
+    width: 100%;
+    height: 100%;
+}
+
+.btnLogin {
+    width: 100%;
+    height: 54px;
+    margin-top: 60px;
+    background-color: #0089ED;
+    font-size: 16px;
+}
+
+.login {
+    width: 90%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.FormControlLogin {
+    height: 57px;
+    font-size: 14px;
+
+}
+
+.FormControlLogin::placeholder {
+    font-size: 14px;
+}
+
+.FormLabelLogin {
+    font-size: 16px;
+    color: #000;
+    margin-top: 40px;
+}
+
+.headerLogin {
+    width: 90%;
+
+    display: flex;
+
+    justify-content: space-between;
+    margin: 0px;
+}
+
+.bemvindo {
+    width: 60%;
+    height: 100%;
+    display: flex;
+
+    font-size: 21px;
+    flex-direction: column;
+}
+
+.chamadaRegistro {
+
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    color: #8D8D8D;
+    font-size: 13px;
+}
+
+.CashwiseLogin {
+    color: #0089ED;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 21px;
+    margin: 0px 5px;
+}
+
+.TituloLogin {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    font-size: 21px;
+}
+
+.h2Login {
+    font-size: 55px;
+    font-weight: 500;
+}
+
+.SubtituloLogin {
+    height: 200px;
+    /* background-color: #0089ED; */
+    display: flex;
+    align-items: center;
+
+}
+
+.LinkRegistrar {
+    color: #0089ED;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.cima{
+    color: #fff;
+display: flex;
+}
+.logoLogin{
+    padding: 25px;
+    font-size: 30px ;
+    font-weight: 800;
+}
+.descricaoContainer{
+width: 31%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.descricao{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.tituloDescricao{
+    font-size: 34px ;
+    font-weight: 600;
+}
+.subtituloDescricao{
+    font-size: 24px ;
+    font-weight: 300 ;
+}
+.descricaoText{
+    font-size: 13px;
+    font-weight: 300;
+    margin-top: 30px;
+    width: 60%;
+}
+.lottieAnimation{
+    height: 100%;
+}
+.baixoEsquerda{
+    display: flex;
+    align-items: center;
+   
+}
+.stacks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    width: 145px;
+    height: 164px;
+    background-color: #EFF8FF;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 0px px -4px rgba(0, 0, 0, 0.15);
+}
+.iconeStack{
+    width: 76px;
+    height: 76px;
+    color: #0089ED;
+}
+.nomeStack{
+    font-size: 15px;
+    font-weight: 500 ;
+    margin-top: 10px;
+}
+
+
+/* // OUTRAS RESOLUÇÕES //  */
+
+@media (max-width: 1919px) and (max-height: 1079px) {
+    .baixoDireita {
+        background-color: #fff;
+        border-radius: 30px;
+        width: 540px;
+        height: 740px;
+        position: absolute;
+        top: -80%;
+        left: 65%;
+        box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+  }
+@media (max-width: 1440px) and (max-height: 1079px) {
+    .baixoDireita {
+        background-color: #fff;
+        border-radius: 30px;
+        width: 540px;
+        height: 740px;
+        position: absolute;
+        top: -80%;
+        left: 55%;
+        box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+  }
+@media (max-width: 1366px) and (max-height: 768px) {
+    .baixoDireita {
+        background-color: #fff;
+        border-radius: 30px;
+        width: 540px;
+        height: 620px;
+        position: absolute;
+        top: -95%;
+        left: 55%;
+        box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+  }

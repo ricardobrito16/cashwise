@@ -1,0 +1,29 @@
+.DashboardContainer{
+display: flex;
+height: 100vh;
+width: 100vw;
+}
+.RigthContainer{
+    width: 100%;
+    height: 100%;
+}
+.ContainerDash{
+    /* background-color: blue; */
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.BtnNewProduct{
+margin-right: 100px;
+}
+.TituloPagina{
+    margin-left: 100px;
+}
+.TableContainer{
+    text-align: center;
+
+    padding: 40px 100px;
+}
+.formPersonalizado{
+    margin: 10px;
+}

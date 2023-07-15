@@ -1,0 +1,48 @@
+.DashboardContainer{
+display: flex;
+height: 100vh;
+width: 100vw;
+}
+.RigthContainer{
+    width: 100%;
+    height: 100%;
+}
+.ContainerDash{
+    /* background-color: blue; */
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.BtnNewProduct{
+margin-right: 100px;
+}
+.TituloPagina{
+    margin-left: 100px;
+}
+.TableContainerPdv{
+    text-align: center;
+
+    padding: 10px 20px;
+}
+.BootstrapContainer{
+ margin: 0px;
+ display: flex;
+ justify-content: center;
+ 
+}
+
+.BootstrapSearch{
+margin: 10px;
+}
+.BootstrapLinha{
+width: 100%;
+}
+.ButtonBootstrap{
+    width: 190px;
+    margin-bottom: 10px;
+    background-color: #1E90FF;
+
+}
+.CardTotal{
+    margin-bottom: 10px;
+}

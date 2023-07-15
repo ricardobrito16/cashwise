@@ -1,0 +1,111 @@
+.HeaderContainer{
+    height: 50px;
+    width: 100%;
+    background-color: #1E90FF;
+}
+.search-container{
+    height: 90px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1E90FF;
+}
+.user-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.username{
+    margin:0px 10px;
+    color: #45464B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.h3Personalizado, .hpPersonalizado {
+    margin:0px 10px;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+.username p{
+    margin:0px 10px;
+    
+    color: #45464B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+.username .sair{
+    height: 42px;
+    width: 80px;
+    margin: 0px;
+    cursor: pointer;
+    justify-content: space-evenly;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color:#F6F7FB ;
+    border: 1px solid #F0F1F6;
+    
+    
+}
+
+.user-img{
+    background-image: url(../../assets/avatar.jpg);
+    height: 34px;
+    width: 34px; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    border-radius: 100px;
+    
+}
+
+    
+
+.search  {
+    height: 42px;
+    width: 40%;
+    border: solid 1px #CDCFD4;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.placeholder-text{
+    width: 95%;
+    padding: 5px 5px;
+    border: none;
+    outline: none;
+}
+.search form{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.search form p{
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#A6ACB8;
+    font-size: 20px;
+}
+.sair p{
+    margin: 0px;
+    
+}
