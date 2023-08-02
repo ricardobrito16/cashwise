@@ -30,10 +30,12 @@ const PedidoConfirmado = () => {
     removeFromCart,
     abrirJanela,
     // abrirNovaJanela,
-    handleUndo
+    handleUndo,
+    valorRecebido,
+    troco,
   } = useCreateOrder()
-  const [troco, setTroco] = useState(localStorage.getItem('troco') || '');
-  const [valorRecebido, setValorRecebido] = useState(localStorage.getItem('valorRecebido') || '');
+  // const [troco, setTroco] = useState(localStorage.getItem('troco') || '');
+  // const [valorRecebido, setValorRecebido] = useState(localStorage.getItem('valorRecebido') || '');
   const [selectedOption, setSelectedOption] = useState(localStorage.getItem('selectedOption') || '');
   const [cart, setCart] = useState([]);
 
@@ -46,25 +48,16 @@ const PedidoConfirmado = () => {
   }, []);
   const cartTotal = parseFloat(localStorage.getItem('cartTotal'));
 
+  
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(storedCart);
+    
+    
+    const selectedOptionFromStorage = localStorage.getItem('selectedOption') || '';
 
-    const cleanup = () => {
-      localStorage.removeItem('troco');
-      localStorage.removeItem('valorRecebido');
-      localStorage.removeItem('selectedOption');
-      localStorage.removeItem('cartTotal');
-      localStorage.removeItem('cart');
-    }
-
-    window.addEventListener('beforeunload', cleanup);
-
-    return () => {
-      window.removeEventListener('beforeunload', cleanup);
-    }
+    
+ 
+    setSelectedOption(selectedOptionFromStorage);
   }, []);
-
   console.log(troco)
   // console.log("CUPOM"+cart)
   return (

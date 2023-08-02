@@ -60,10 +60,11 @@ const nomeMesAtual = meses[mesAtual];
   const dataFormatada = format(dataAtual, "dd/MM/yyyy");
   
   // console.log(dataFormatada); 
+  
   useEffect(() => {
     const fetchVendasHoje = async () => {
     // Obtenha o UID do usuário
-
+const uid = user.uid
         const vendasHojeCollection = collection(db, 'usuarios', uid, 'orders');
         const dataAtual = new Date();
         const dataFormatada = format(dataAtual, "dd/MM/yyyy");

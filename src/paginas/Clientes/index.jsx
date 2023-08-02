@@ -189,8 +189,8 @@ const {user} = useUserAuth()
                             <Table hover size="sm"  >
                                 <thead className="CabecalhoTabela">
                                     <tr className="Linha">
-                                        <th className="ItemCabeçalhoTabela">Código de Barras</th>
-                                        <th className="ItemCabeçalhoTabela">Descrição</th>
+                                        <th className="ItemCabeçalhoTabela">CPF/CNPJ</th>
+                                        <th className="ItemCabeçalhoTabela">Nome</th>
                                         <th className="ItemCabeçalhoTabela"></th>
                                         {/* <th>Categoria</th>
                                     <th>Quantidade</th>
@@ -288,7 +288,7 @@ const {user} = useUserAuth()
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="example-modal-sizes-title-lg">
-                            Editando Client: {editingClient.nome}
+                            Editando Cliente: {editingClient.nome}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

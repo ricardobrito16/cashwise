@@ -47,7 +47,7 @@ function Pdv() {
 
         filteredProducts,
         addToCart,
-valorTotal,
+        valorTotal,
         calculateCartTotal,
         handlePlaceOrder,
         removeFromCart,
@@ -56,13 +56,14 @@ valorTotal,
         setValorTotal,
         selectedOption,
         setValorRecebido,
+        valorRecebido,
         troco,
         handleOptionChange
 
     } = useCreateOrder()
-    const {user} = useUserAuth();
-    
-  
+    const { user } = useUserAuth();
+
+
 
     return (
         <div className="DashboardContainer">
@@ -136,12 +137,12 @@ valorTotal,
 
                                                             <td><button className='btnOption' onClick={
                                                                 () => {
-                                                                addToCart(product)
-                                                                calculateCartTotal().toFixed(2)
+                                                                    addToCart(product)
+                                                                    // calculateCartTotal().toFixed(2)
+                                                                }
                                                             }
-                                                            } 
-                                                                
-                                                                ><MdAddShoppingCart className='iconBtn' /></button> </td>
+
+                                                            ><MdAddShoppingCart className='iconBtn' /></button> </td>
                                                         </tr>
                                                     ))}
                                                 </tbody>
@@ -175,7 +176,12 @@ valorTotal,
                                                             <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}</td>
 
                                                             <td>{typeof product.total === 'number' ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.total) : new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.total)}</td>
-                                                            <td><button className='btnOption' onClick={() => removeFromCart(product.id)} ><FiTrash2 className='iconBtn' /></button> </td>
+                                                            <td><button className='btnOption' onClick={() => {
+                                                                removeFromCart(product.id);
+
+                                                            }
+
+                                                            } ><FiTrash2 className='iconBtn' /></button> </td>
                                                         </tr>
                                                     ))}
                                                 </tbody>
@@ -220,20 +226,32 @@ valorTotal,
                                                                 <Card className='CardTotal'>
                                                                     <Card.Header>Valor Recebido</Card.Header>
                                                                     <Card.Body>
-                                                                        <Form.Control type="number" placeholder="R$" onChange={(event) => setValorRecebido(Number(event.target.value))} />
+                                                                        <Form.Control
+                                                                            type="number"
+                                                                            placeholder="R$"
+
+                                                                            onChange={(event) => {
+                                                                                const valorDigitado = Number(event.target.value);
+                                                                                setValorRecebido(valorDigitado);
+                                                                                localStorage.setItem('valorRecebido', valorDigitado);
+                                                                            }}
+                                                                        />
                                                                     </Card.Body>
                                                                 </Card>
 
                                                                 <Card className='CardTotal'>
                                                                     <Card.Header>Troco</Card.Header>
                                                                     <Card.Body>
-                                                                        {troco >= 0 ?
-                                                                            <blockquote className="blockquote mb-0">
-                                                                                <p>R${troco}</p>
-                                                                            </blockquote>
-                                                                            :
-                                                                            <div>Troco não calculado ainda</div>
+                                                                        {
+                                                                            isNaN(parseFloat(troco)) || typeof troco === 'undefined' ? (
+                                                                                <div>Troco não calculado ainda</div>
+                                                                            ) : (
+                                                                                <blockquote className="blockquote mb-0">
+                                                                                    <p>R${parseFloat(troco).toFixed(2)}</p>
+                                                                                </blockquote>
+                                                                            )
                                                                         }
+
                                                                     </Card.Body>
                                                                 </Card>
                                                             </>

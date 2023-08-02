@@ -50,24 +50,28 @@ export function CreateOrderContextProvider({ children }) {
     const [cartItems, setCartItems] = useState([])
 
 
-    const [valorRecebido, setValorRecebido] = useState(0);
+    const [valorRecebido, setValorRecebido] = useState(localStorage.getItem("valorRecebido"));
     const [valorTotal, setValorTotal] = useState(0);
     const [troco, setTroco] = useState(0);
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
 
 
-
+console.log("valor em dinheiro:" + valorRecebido)
     const calcularTroco = () => {
-        const troco = valorRecebido - valorTotal;
-        setTroco(troco.toFixed(2));
+        // Certifique-se de que valorRecebido e valorTotal são números antes de calcular o troco
+        const valorRecebidoNumero = parseFloat(valorRecebido);
+        const valorTotalNumero = parseFloat(valorTotal);
+      
+        const troco = valorRecebidoNumero - valorTotalNumero;
+        setTroco(troco)
         localStorage.setItem('troco', troco.toFixed(2));
-        localStorage.setItem('valorRecebido', valorRecebido.toFixed(2));
-    }
-    useEffect(() => {
+        localStorage.setItem('valorRecebido', valorRecebidoNumero.toFixed(2));
+      };
+      
+      useEffect(() => {
         calcularTroco();
-    }, [valorRecebido]);
-
+      }, [valorRecebido]);
    
     const handleOptionChange = (e) => {
         const selectedOption = e.target.value;
@@ -88,27 +92,113 @@ export function CreateOrderContextProvider({ children }) {
     };
 
 
+    // const addToCart = async (product) => {
+    //     const productId = product.id;
+    //     const productIndex = cart.findIndex((item) => item.id === productId);
+
+    //     if (productIndex !== -1) {
+    //         const updatedCart = [...cart];
+    //         updatedCart[productIndex].quantity += 1;
+    //         updatedCart[productIndex].total = updatedCart[productIndex].quantity * updatedCart[productIndex].price;
+    //         setCart(updatedCart);
+    //         localStorage.setItem("cart", JSON.stringify(updatedCart)); 
+
+
+    //     } else {
+    //         const productWithQuantity = { ...product, quantity: 1, total: product.price };
+    //         setCart([...cart, productWithQuantity]);
+    //         localStorage.setItem("cart", JSON.stringify([...cart, productWithQuantity])); 
+
+
+    //     }
+    // };
+
+    // const calculateCartTotal = () => {
+    //     let total = 0;
+      
+        
+    //     cart.forEach(product => {
+    //       const price = parseFloat(product.price);
+    //       const quantity = parseFloat(product.quantity);
+    //       total += price * quantity;
+    //     });
+      
+    //     const updatedTotal = total;
+      
+    //     setValorTotal(updatedTotal);
+    //     localStorage.setItem('cartTotal', updatedTotal.toFixed(2));
+      
+    //     return updatedTotal;
+    //   };
+    // const addToCart = async (product) => {
+    //     const productId = product.id;
+    //     const productIndex = cart.findIndex((item) => item.id === productId);
+    
+    //     if (productIndex !== -1) {
+    //         const updatedCart = [...cart];
+    //         updatedCart[productIndex].quantity += 1;
+    //         updatedCart[productIndex].total = updatedCart[productIndex].quantity * updatedCart[productIndex].price;
+    //         setCart(updatedCart);
+    
+    //         // Atualize o valor total após a alteração do carrinho
+    //         calculateCartTotal(updatedCart);
+            
+    //         localStorage.setItem("cart", JSON.stringify(updatedCart));
+    //     } else {
+    //         const productWithQuantity = { ...product, quantity: 1, total: product.price };
+    //         setCart([...cart, productWithQuantity]);
+    
+    //         // Atualize o valor total após a alteração do carrinho
+    //         calculateCartTotal([...cart, productWithQuantity]);
+    
+    //         localStorage.setItem("cart", JSON.stringify([...cart, productWithQuantity]));
+    //     }
+    // };
     const addToCart = async (product) => {
         const productId = product.id;
         const productIndex = cart.findIndex((item) => item.id === productId);
-
+    
         if (productIndex !== -1) {
             const updatedCart = [...cart];
             updatedCart[productIndex].quantity += 1;
             updatedCart[productIndex].total = updatedCart[productIndex].quantity * updatedCart[productIndex].price;
             setCart(updatedCart);
-            localStorage.setItem("cart", JSON.stringify(updatedCart)); 
-
-
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+    
+            // Utilize o estado atualizado diretamente ao chamar calculateCartTotal
+            calculateCartTotal(updatedCart);
         } else {
             const productWithQuantity = { ...product, quantity: 1, total: product.price };
             setCart([...cart, productWithQuantity]);
-            localStorage.setItem("cart", JSON.stringify([...cart, productWithQuantity])); 
-
-
+            localStorage.setItem("cart", JSON.stringify([...cart, productWithQuantity]));
+    
+            // Utilize o estado atualizado diretamente ao chamar calculateCartTotal
+            calculateCartTotal([...cart, productWithQuantity]);
         }
     };
-
+    
+    const calculateCartTotal = (updatedCart) => {
+        if (!updatedCart || updatedCart.length === 0) {
+            return 0;
+        }
+    
+        let total = 0;
+    
+        updatedCart.forEach(product => {
+            const price = parseFloat(product.price);
+            const quantity = parseFloat(product.quantity);
+            product.total = price * quantity; // Recalcula o total de cada produto
+            total += product.total;
+        });
+    
+        const updatedTotal = total;
+    
+        setValorTotal(updatedTotal);
+        localStorage.setItem('cartTotal', updatedTotal.toFixed(2));
+    
+        return updatedTotal;
+    };
+    console.log(valorTotal)
     const placeOrder = async () => {
         
         const cartCopy = [...cart];
@@ -144,7 +234,7 @@ export function CreateOrderContextProvider({ children }) {
             date: dataFormatada,
             month: mesAtual, 
             items: cartCopy,
-            total: calculateCartTotal(),
+            total: valorTotal,
             troco: troco,
             recebido: valorRecebido,
             pagamento: selectedOption
@@ -160,23 +250,6 @@ export function CreateOrderContextProvider({ children }) {
     };
 
     
-    const calculateCartTotal = () => {
-        let total = 0;
-      
-        
-        cart.forEach(product => {
-          const price = parseFloat(product.price);
-          const quantity = parseFloat(product.quantity);
-          total += price * quantity;
-        });
-      
-        const updatedTotal = total;
-      
-        setValorTotal(updatedTotal);
-        localStorage.setItem('cartTotal', updatedTotal.toFixed(2));
-      
-        return updatedTotal;
-      };
 
     
     const handlePlaceOrder = async () => {
@@ -196,9 +269,23 @@ export function CreateOrderContextProvider({ children }) {
 
 
 
+    // const removeFromCart = (productId) => {
+    //     const productIndex = cart.findIndex((item) => item.id === productId);
+
+    //     if (productIndex !== -1) {
+    //         const updatedCart = [...cart];
+    //         if (updatedCart[productIndex].quantity === 1) {
+    //             updatedCart.splice(productIndex, 1);
+    //         } else {
+    //             updatedCart[productIndex].quantity -= 1;
+    //         }
+    //         setCart(updatedCart);
+    //         localStorage.setItem("cart", JSON.stringify(updatedCart)); // salva o carrinho atualizado no localStorage
+    //     }
+    // };
     const removeFromCart = (productId) => {
         const productIndex = cart.findIndex((item) => item.id === productId);
-
+    
         if (productIndex !== -1) {
             const updatedCart = [...cart];
             if (updatedCart[productIndex].quantity === 1) {
@@ -207,6 +294,10 @@ export function CreateOrderContextProvider({ children }) {
                 updatedCart[productIndex].quantity -= 1;
             }
             setCart(updatedCart);
+    
+            // Recalcule o valor total após a remoção do item
+            calculateCartTotal(updatedCart);
+    
             localStorage.setItem("cart", JSON.stringify(updatedCart)); // salva o carrinho atualizado no localStorage
         }
     };
@@ -288,7 +379,7 @@ export function CreateOrderContextProvider({ children }) {
                 handleOptionChange,
                 showSuccessAlert, setShowSuccessAlert,
                 showErrorAlert, setShowErrorAlert,
-
+                troco,
             }}
         >
             {children}
